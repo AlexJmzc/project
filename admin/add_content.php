@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
       <p>Título <span>*</span></p>
       <input type="text" name="title" maxlength="100" required placeholder="Título" class="box">
       <p>Descripción <span>*</span></p>
-      <textarea name="description" class="box" required placeholder="Descripción" maxlength="1000" cols="30" rows="10"></textarea>
+      <textarea name="description" class="box" required placeholder="Descripción" maxlength="5000" cols="30" rows="100"></textarea>
       <p>Playlist <span>*</span></p>
       <select name="playlist" class="box" required>
          <option value="" disabled selected>-- Playlist</option>

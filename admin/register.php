@@ -91,7 +91,7 @@ if(isset($message)){
                <option value="Ingeniero">Ingeniero</option>
             </select>
             <p>Email <span>*</span></p>
-            <input type="email" name="email" placeholder="Ingresa tu correo" maxlength="20" required class="box">
+            <input type="email" name="email" placeholder="Ingresa tu correo" maxlength="40" required class="box">
          </div>
          <div class="col">
             <p>Contraseña <span>*</span></p>

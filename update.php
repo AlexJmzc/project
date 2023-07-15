@@ -120,7 +120,7 @@ if(isset($_POST['submit'])){
             <p>Nombre</p>
             <input type="text" name="name" placeholder="<?= $fetch_profile['name']; ?>" maxlength="100" class="box">
             <p>Email</p>
-            <input type="email" name="email" placeholder="<?= $fetch_profile['email']; ?>" maxlength="100" class="box">
+            <input type="email" name="email" placeholder="<?= $fetch_profile['email']; ?>" maxlength="10000" class="box">
             <p>Actualizar foto</p>
             <input type="file" name="image" accept="image/*" class="box">
          </div>

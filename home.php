@@ -74,31 +74,6 @@ $total_bookmarked = $select_bookmark->rowCount();
       <?php
       }
       ?>
-
-      <div class="box">
-         <h3 class="title">Categorias</h3>
-         <div class="flex">
-            <a href="search_course.php?"><i class="fas fa-code"></i><span>Phishing</span></a>
-            <a href="#"><i class="fas fa-chart-simple"></i><span>Ransomware</span></a>
-            <a href="#"><i class="fas fa-pen"></i><span>Inyección de código</span></a>
-         </div>
-      </div>
-
-      <div class="box">
-         <h3 class="title">popular topics</h3>
-         <div class="flex">
-            <a href="#"><i class="fab fa-html5"></i><span>Whaling</span></a>
-            <a href="#"><i class="fab fa-css3"></i><span>Spear phishing</span></a>
-            <a href="#"><i class="fab fa-css3"></i><span>Ingenieria social</span></a>
-         </div>
-      </div>
-
-      <div class="box tutor">
-         <h3 class="title">Registrarse como profesor</h3>
-         <p>Conviértete en un instructor líder y comparte tus conocimientos en nuestra plataforma de cursos de seguridad.</p>
-         <a href="admin/register.php" class="inline-btn">Registarse</a>
-      </div>
-
    </div>
 
 </section>

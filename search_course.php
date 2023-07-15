@@ -40,12 +40,13 @@ if(isset($_COOKIE['user_id'])){
       <?php
          if(isset($_POST['search_course']) or isset($_POST['search_course_btn'])){
          $search_course = $_POST['search_course'];
-         $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE title LIKE '%{$search_course}%' AND status = ?");
+         $search_course_btn = $_POST['search_course_btn'];
+         echo $search_course_btn;
+         $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE title LIKE '%{$search_course}%' OR title LIKE '%{$search_course_btn}%' AND status = ?");
          $select_courses->execute(['active']);
          if($select_courses->rowCount() > 0){
             while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
                $course_id = $fetch_course['id'];
-
                $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
                $select_tutor->execute([$fetch_course['tutor_id']]);
                $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);

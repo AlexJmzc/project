@@ -84,7 +84,7 @@ if(isset($_POST['submit'])){
             <p>Nombre <span>*</span></p>
             <input type="text" name="name" placeholder="Ingresa tu nombre" maxlength="50" required class="box">
             <p>Email <span>*</span></p>
-            <input type="email" name="email" placeholder="Ingresa tu correo" maxlength="20" required class="box">
+            <input type="email" name="email" placeholder="Ingresa tu correo" maxlength="40" required class="box">
          </div>
          <div class="col">
             <p>Contraseña <span>*</span></p>

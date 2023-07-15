@@ -44,32 +44,13 @@ if(isset($_COOKIE['user_id'])){
          <p>"Nuestra empresa nace con la misión de promover la seguridad informática y proteger a individuos y organizaciones en un mundo digital cada vez más vulnerable.
             Nos apasiona ofrecer cursos de alta calidad, 
             desarrollados por expertos en seguridad, para empoderar a las personas y fortalecer sus habilidades en la protección de datos y la prevención de ciberataques.</p>
-         <a href="courses.html" class="inline-btn">Nuestros cursos</a>
+         <a href="courses.php" class="inline-btn">Nuestros cursos</a>
       </div>
 
    </div>
-
    <div class="box-container">
-
-      <div class="box">
-         <i class="fas fa-graduation-cap"></i>
-         <div>
-            <h3>Correo</h3>
-            <span>secureu.courses@gmail.com</span>
-         </div>
-      </div>
-
-
    </div>
-
 </section>
-
-
-
-
-
-
-
 
 
 

@@ -60,6 +60,78 @@ $preguntas = array(
         ),
         "respuesta_correcta" => "c"
     ),
+    "3" => array(
+        "pregunta" => "¿Cuáles son algunas señales de advertencia comunes de un correo electrónico de phishing?",
+        "respuestas" => array(
+            "a" => "Errores de ortografía y gramática, remitente desconocido, solicitudes urgentes de información personal.",
+            "b" => "Correo electrónico en blanco sin contenido.",
+            "c" => "Correo electrónico de un amigo o familiar solicitando información personal."
+        ),
+        "respuesta_correcta" => "a"
+    ),
+    "4" => array(
+        "pregunta" => "¿Qué debes hacer si sospechas que has recibido un correo electrónico de phishing?",
+        "respuestas" => array(
+            "a" => "Responder al correo electrónico proporcionando la información solicitada.",
+            "b" => "Ignorar el correo electrónico y eliminarlo de inmediato.",
+            "c" => "Informar el correo electrónico sospechoso a las autoridades o al departamento de seguridad de tu organización."
+        ),
+        "respuesta_correcta" => "c"
+    ),
+    "5" => array(
+        "pregunta" => "¿Qué es la ingeniería social?",
+        "respuestas" => array(
+            "a" => "Un método para resolver problemas de ingeniería mediante la aplicación de principios sociales.",
+            "b" => "Un método para manipular o engañar a las personas para obtener información confidencial.",
+            "c" => "Un método para construir puentes y estructuras de ingeniería utilizando técnicas sociales."
+        ),
+        "respuesta_correcta" => "b"
+    ),
+    "6" => array(
+        "pregunta" => "¿Cuál de las siguientes opciones es una buena práctica para la creación de contraseñas seguras?",
+        "respuestas" => array(
+            "a" => "Utilizar contraseñas cortas y sencillas que sean fáciles de recordar.",
+            "b" => "Utilizar la misma contraseña para múltiples cuentas en línea.",
+            "c" => "Utilizar contraseñas largas y complejas que incluyan letras mayúsculas, minúsculas, números y caracteres especiales."
+        ),
+        "respuesta_correcta" => "c"
+    ),
+    "7" => array(
+        "pregunta" => "¿Cuál de las siguientes afirmaciones es verdadera sobre el almacenamiento de contraseñas?",
+        "respuestas" => array(
+            "a" => "Es seguro almacenar las contraseñas en un archivo de texto plano en el escritorio de tu computadora.",
+            "b" => "Es seguro almacenar las contraseñas en un gestor de contraseñas con cifrado seguro.",
+            "c" => "Es seguro enviar tus contraseñas por correo electrónico para almacenarlas en un servidor remoto."
+        ),
+        "respuesta_correcta" => "b"
+    ),
+    "8" => array(
+        "pregunta" => "¿Cuál de las siguientes medidas de seguridad puede ayudar a prevenir el phishing?",
+        "respuestas" => array(
+            "a" => "Mantener el software y los sistemas operativos desactualizados.",
+            "b" => "Abrir todos los correos electrónicos y hacer clic en los enlaces adjuntos sin verificar su origen.",
+            "c" => "Verificar la autenticidad de los remitentes y enlaces antes de proporcionar información personal o confidencial."
+        ),
+        "respuesta_correcta" => "c"
+    ),
+    "9" => array(
+        "pregunta" => "¿Qué es el vishing?",
+        "respuestas" => array(
+            "a" => "Un tipo de phishing que se realiza a través de mensajes de voz o llamadas telefónicas.",
+            "b" => "Un tipo de phishing que se realiza a través de mensajes de texto (SMS).",
+            "c" => "Un tipo de phishing que se realiza a través de redes sociales."
+        ),
+        "respuesta_correcta" => "a"
+    ),
+    "10" => array(
+        "pregunta" => "¿Qué deberías hacer si sospechas que has sido víctima de un ataque de phishing?",
+        "respuestas" => array(
+            "a" => "Responder al correo electrónico proporcionando la información solicitada.",
+            "b" => "Informar el incidente a las autoridades y a tu proveedor de servicios de correo electrónico.",
+            "c" => "Ignorar la situación y esperar a ver si el problema se resuelve por sí solo."
+        ),
+        "respuesta_correcta" => "b"
+    ),
     // Agrega más preguntas aquí...
 );
 $puntaje = 0;
@@ -71,6 +143,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     foreach ($preguntas as $id => $pregunta) {
         if (isset($_POST["pregunta_" . $id])) {
             $respuestaSeleccionada = $_POST["pregunta_" . $id];
+            ?>
+            <br>
+            <?php
             if ($respuestaSeleccionada === $pregunta["respuesta_correcta"]) {
                 $puntaje++;
             }
@@ -97,13 +172,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <br>
         <?php endforeach; ?>
         
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar Respuestas">
     </form>
-
-   </div>
-
-   <?php
-if ($puntaje != 0) {
+    <br>
+    <?php
+if ($puntaje >= 6) {
 
     try {
     $insert_nota = "UPDATE `bookmark` SET `nota`=$puntaje WHERE `user_id`='$user_id' and `playlist_id`='$get_id'";
@@ -113,9 +186,17 @@ if ($puntaje != 0) {
     } catch (PDOException $e) {
         echo "Error al ejecutar la consulta: " . $e->getMessage();
     }
-echo "Tu puntaje actual es: " . $puntaje . "/" . count($preguntas);
+echo "<h2>Tu puntaje actual es: " . $puntaje . "/" . count($preguntas)."</h2>";
+}else if($puntaje == 0){
+    echo "<h2>no has seleccionado ninguna respuesta correcta aun</h2>";
+}elseif($puntaje <= 5){
+    echo "<h2>Tu puntaje es: " . $puntaje . "/" . count($preguntas)." tienes que rendir la evaluacion otra vez</h2>";
 }
 ?>
+
+   </div>
+
+
 
 
 </section>

@@ -182,7 +182,51 @@ if ($puntaje >= 6) {
     $insert_nota = "UPDATE `bookmark` SET `nota`=$puntaje WHERE `user_id`='$user_id' and `playlist_id`='$get_id'";
     $stmt = $conn->prepare($insert_nota);
     $stmt->execute();
-        // Resto del código...
+
+    $select_email = $conn->prepare("SELECT `email` FROM `users` WHERE id = '$user_id'");
+    $select_email->execute();
+
+    $resultados = $select_email->fetchAll(PDO::FETCH_ASSOC);
+
+    $destinatario = '';
+    if ($select_email->rowCount() > 0) {
+        // Hay datos en $resultados
+        // Realiza las operaciones que deseas con los datos
+        foreach ($resultados as $row) {
+            $destinatario = $row['email'];
+            // Realiza alguna acción con el email obtenido
+            echo "Email: " . $email;
+        }
+    } else {
+        // No hay datos en $resultados
+        echo "No se encontraron resultados.";
+    }
+
+   
+    #$parametro = "bonny120700@gmail.com";
+
+    $parametroEscapado = escapeshellarg($destinatario);
+
+
+    // Comando para ejecutar el archivo Python con el parámetro
+    $comando = "C:/Users/User/AppData/Local/Programs/Python/Python39/python.exe main.py $parametroEscapado";
+
+    // Ejecuta el comando
+    $resultado = shell_exec($comando);
+
+   
+    // Mensaje emergente
+    $mensaje1 = "Has aprobado, las instrucciones para obtener tu certificado te llegarán a tu correo";
+
+    echo "<script type='text/javascript'>alert('$mensaje1');</script>";
+
+    
+    $url = "home.php";
+    echo "<meta http-equiv='refresh' content='0;URL=$url'>";
+    
+    exit;
+
+    
     } catch (PDOException $e) {
         echo "Error al ejecutar la consulta: " . $e->getMessage();
     }

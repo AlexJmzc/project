@@ -48,7 +48,18 @@ if(isset($_COOKIE['user_id'])){
       </div>
 
    </div>
+   
    <div class="box-container">
+
+      <div class="box">
+         <i class="fas fa-graduation-cap"></i>
+         <div>
+            <h3>Correo</h3>
+            <span>secureu.courses@gmail.com</span>
+         </div>
+      </div>
+
+
    </div>
 </section>
 
